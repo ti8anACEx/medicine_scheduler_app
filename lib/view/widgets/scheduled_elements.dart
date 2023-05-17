@@ -67,34 +67,32 @@ class _ScheduledElementsState extends State<ScheduledElements> {
           color: Colors.grey,
           borderRadius: BorderRadius.circular(8),
         ),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              "${widget.snap["text"]}".text.size(20).make(),
-              5.heightBox,
-              const Divider(),
-              5.heightBox,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      "Reminder on ${widget.snap["reminderDate"]}"
-                          .text
-                          .size(13)
-                          .make(),
-                      "Scheduled on $formattedDate".text.size(13).make(),
-                    ],
-                  ),
-                  "Delete".text.size(18).make().onTap(() {
-                    showDeletePostOption(context);
-                  }),
-                ],
-              )
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            "${widget.snap["text"]}".text.size(20).make(),
+            5.heightBox,
+            const Divider(),
+            5.heightBox,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    "Reminder on ${widget.snap["reminderDate"]}"
+                        .text
+                        .size(13)
+                        .make(),
+                    "Scheduled on $formattedDate".text.size(13).make(),
+                  ],
+                ),
+                "Delete".text.size(18).make().onTap(() {
+                  showDeletePostOption(context);
+                }),
+              ],
+            )
+          ],
         ),
       ),
     );

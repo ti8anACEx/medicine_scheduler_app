@@ -35,6 +35,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ListView.builder(
+                shrinkWrap: true,
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
                   return ScheduledElements(

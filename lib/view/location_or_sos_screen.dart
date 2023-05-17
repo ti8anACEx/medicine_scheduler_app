@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
+import 'package:flutter_web_browser/flutter_web_browser.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:medicine_scheduler_app/controller/firebase_methods.dart';
 import 'package:medicine_scheduler_app/globals/global_vars.dart';
 import 'package:medicine_scheduler_app/view/add_sos_no.dart';
 import 'package:medicine_scheduler_app/view/widgets/sos_showcase.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -57,12 +59,19 @@ class _LocationOrSOSscreenState extends State<LocationOrSOSscreen> {
     });
   }
 
+  // Future<void> openMap(String lat, String long) async {
+  //   String googleUrl =
+  //       'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+  //   await canLaunchUrl(Uri.parse(googleUrl))
+  //       ? await launchUrl(Uri.parse(googleUrl))
+  //       : throw "Could not launch $googleUrl";
+  // }
   Future<void> openMap(String lat, String long) async {
     String googleUrl =
-        'https://www.google.com/maps/search/?api=1&query=$lat,$long';
-    await canLaunchUrlString(googleUrl)
-        ? await launchUrlString(googleUrl)
-        : throw "Could not launch $googleUrl";
+        await 'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+    await FlutterWebBrowser.openWebPage(
+      url: googleUrl,
+    );
   }
 
   @override
